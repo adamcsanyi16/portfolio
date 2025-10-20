@@ -94,21 +94,21 @@ const Home = () => {
               <h1>My Projects</h1>
               <div className="allprocards">
                 <div className="procard">
-                  <a href="http://novelnest.nhely.hu/">
-                    <div className="procard_content">
-                      <p className="procard_title">NovelNest</p>
-                      <p className="procard_description">
-                        This is a Full-Stack project made with React and NodeJS.
-                      </p>
-                    </div>
-                  </a>
-                </div>
-                <div className="procard">
                   <a href=".\Novel Nest.pdf" download>
                     <div className="procard_content">
                       <p className="procard_title">NovelNest</p>
                       <p className="procard_description">
                         You can download the documentation to this project.
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                <div className="procard">
+                  <a href="https://github.com/adamcsanyi16">
+                    <div className="procard_content">
+                      <p className="procard_title">My Github</p>
+                      <p className="procard_description">
+                        Here you can browse through my work on github.
                       </p>
                     </div>
                   </a>
@@ -154,7 +154,7 @@ const Home = () => {
               <a href=".\CV_AdamCsanyi.pdf" download className="button">
                 <span>Download</span>
               </a>
-              <a href=".\CV_CsányiÁdám.pdf" download className="button">
+              <a href=".\CV_CsanyiAdam.pdf" download className="button">
                 <span>Letöltés</span>
               </a>
             </div>
