@@ -4,6 +4,59 @@ import "./Home.css";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("skills");
+  const [projectIndex, setProjectIndex] = useState(0);
+  const [copyMessage, setCopyMessage] = useState("");
+
+  const projects = [
+    {
+      title: "VédőÜgyvéd",
+      description:
+        "An agile-developed project in university. Programming practice site.",
+      href: "https://ugyved-57a51.web.app/login",
+      download: false,
+    },
+    {
+      title: "Pontrendszer",
+      description: "A point managing system for a football club named Algyő SK",
+      href: "https://algyopontok.web.app/",
+      download: false,
+    },
+    {
+      title: "FiberRangers",
+      description: "Optical and security system installation company",
+      href: "https://www.fiberrangers.hu/",
+      download: false,
+    },
+    {
+      title: "Ipolykapu Kemping",
+      description: "A camping site located in Szob.",
+      href: "https://www.ipolykapu.hu/",
+      download: false,
+    },
+  ];
+
+  const handleNextProject = () => {
+    setProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
+  };
+
+  const handlePrevProject = () => {
+    setProjectIndex(
+      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length,
+    );
+  };
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("csanyi.adam16@gmail.com");
+      setCopyMessage("Copied to clipboard");
+    } catch {
+      setCopyMessage("Unsuccessful copy. Email: csanyi.adam16@gmail.com");
+    }
+
+    setTimeout(() => {
+      setCopyMessage("");
+    }, 2500);
+  };
 
   return (
     <div className="main">
@@ -74,45 +127,71 @@ const Home = () => {
               <h1>My skills</h1>
               <ul className="tag">
                 <li className="tag__name">Javascript</li>
-                <li className="tag__name">CSS</li>
+                <li className="tag__name">Typescript</li>
                 <li className="tag__name">HTML</li>
+                <li className="tag__name">CSS</li>
                 <li className="tag__name">React</li>
                 <li className="tag__name">Vite</li>
                 <li className="tag__name">NodeJS</li>
                 <li className="tag__name">Express.js</li>
-                <li className="tag__name">Java</li>
                 <li className="tag__name">Python</li>
-                <li className="tag__name">C#</li>
+                <li className="tag__name">FastAPI</li>
+                <li className="tag__name">PostgreSQL</li>
                 <li className="tag__name">MongoDB</li>
-                <li className="tag__name">MySQL</li>
-                <li className="tag__name">Github/Gitlab</li>
+                <li className="tag__name">Supabase</li>
+                <li className="tag__name">Git</li>
+                <li className="tag__name">Wordpress</li>
               </ul>
             </div>
           )}
           {activeTab === "projects" && (
             <div className="projects">
               <h1>My Projects</h1>
-              <div className="allprocards">
-                <div className="procard">
-                  <a href=".\Novel Nest.pdf" download>
-                    <div className="procard_content">
-                      <p className="procard_title">NovelNest</p>
-                      <p className="procard_description">
-                        You can download the documentation to this project.
-                      </p>
-                    </div>
-                  </a>
+              <div className="project-slider">
+                <button
+                  type="button"
+                  className="slider-btn"
+                  onClick={handlePrevProject}
+                  aria-label="Previous project"
+                >
+                  &#10094;
+                </button>
+                <div className="allprocards">
+                  <div className="procard">
+                    <a
+                      href={projects[projectIndex].href}
+                      download={projects[projectIndex].download}
+                    >
+                      <div className="procard_content">
+                        <p className="procard_title">
+                          {projects[projectIndex].title}
+                        </p>
+                        <p className="procard_description">
+                          {projects[projectIndex].description}
+                        </p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
-                <div className="procard">
-                  <a href="https://github.com/adamcsanyi16">
-                    <div className="procard_content">
-                      <p className="procard_title">My Github</p>
-                      <p className="procard_description">
-                        Here you can browse through my work on github.
-                      </p>
-                    </div>
-                  </a>
-                </div>
+                <button
+                  type="button"
+                  className="slider-btn"
+                  onClick={handleNextProject}
+                  aria-label="Next project"
+                >
+                  &#10095;
+                </button>
+              </div>
+              <p className="project-counter">
+                {projectIndex + 1} / {projects.length}
+              </p>
+              <div className="slider-dots" aria-hidden="true">
+                {projects.map((_, index) => (
+                  <span
+                    key={index}
+                    className={`dot ${projectIndex === index ? "active" : ""}`}
+                  />
+                ))}
               </div>
             </div>
           )}
@@ -138,23 +217,23 @@ const Home = () => {
                   <FaFacebook className="contact-icon" />
                   <span>Facebook</span>
                 </a>
-                <a
-                  href="mailto:csanyi.adam16@gmail.com"
-                  className="contact-btn"
+
+                <button
+                  type="button"
+                  className="contact-btn contact-btn-copy"
+                  onClick={handleCopyEmail}
                 >
                   <FaEnvelope className="contact-icon" />
-                  <span>Gmail</span>
-                </a>
+                  <span>Copy email</span>
+                </button>
               </div>
+              {copyMessage && <p className="copy-message">{copyMessage}</p>}
             </div>
           )}
           {activeTab === "resume" && (
             <div className="resume">
-              <h1>Download my resumes in english or hungarian!</h1>
-              <a href=".\CV_AdamCsanyi.pdf" download className="button">
-                <span>Download</span>
-              </a>
-              <a href=".\CV_CsanyiAdam.pdf" download className="button">
+              <h1>Download my resume in hungarian!</h1>
+              <a href="./CV_CsanyiAdamInfo.pdf" download className="button">
                 <span>Letöltés</span>
               </a>
             </div>

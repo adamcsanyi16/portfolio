@@ -110,7 +110,9 @@
   background: white;
   border-radius: 10px;
   transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(190, 190, 190),
+  box-shadow:
+    inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgb(190, 190, 190),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 
@@ -150,6 +152,56 @@
   justify-content: center;
   padding: 2rem;
   gap: 1rem;
+}
+
+.project-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.slider-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #252427;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-btn:hover {
+  background-color: #626263;
+  transform: scale(1.08);
+}
+
+.project-counter {
+  font-family: Helvetica;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: #252427;
+  font-weight: 600;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background-color: #c7c7c7;
+}
+
+.dot.active {
+  background-color: #252427;
 }
 
 .procard {
@@ -204,8 +256,9 @@
   display: grid;
   place-items: center;
   align-content: center;
-  font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue",
-    Helvetica, Arial, sans-serif, system-ui;
+  font-family:
+    "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica,
+    Arial, sans-serif, system-ui;
   margin: auto;
 }
 
@@ -403,6 +456,11 @@
   font-size: 1rem;
 }
 
+.contact-btn-copy {
+  border: none;
+  font-family: Helvetica;
+}
+
 .contact-btn:hover {
   background-color: #626263;
   transform: scale(1.05);
@@ -410,6 +468,13 @@
 
 .contact-icon {
   font-size: 1.3rem;
+}
+
+.copy-message {
+  margin-top: 1rem;
+  text-align: center;
+  color: #252427;
+  font-weight: 600;
 }
 
 @media (max-width: 1024px) {
@@ -427,8 +492,8 @@
   }
 
   .allprocards {
-    flex-wrap: wrap;
     justify-content: center;
+    padding: 1rem;
   }
 
   .procard {
@@ -473,6 +538,16 @@
     justify-content: center;
   }
 
+  .project-slider {
+    gap: 0.5rem;
+  }
+
+  .slider-btn {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.1rem;
+  }
+
   .body {
     --radius: 6px;
     --border: 3px;
@@ -480,11 +555,9 @@
     padding: 3rem;
   }
 
-
   .tabs {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
-    
   }
 }
 
