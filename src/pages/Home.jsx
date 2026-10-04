@@ -65,7 +65,7 @@ const Home = () => {
           <img src=".\cvkep.png" alt="" className="img" />
           <span>About me</span>
           <p className="info">
-            Hi! My name is Adam and I am starting my second year in the field of
+            Hi! My name is Adam and I am a final-year student in the field of
             Computer Science at the University of Szeged. On this webpage, I
             have collected the projects, that I have worked on. Explore and
             contact me if you have any questions!
